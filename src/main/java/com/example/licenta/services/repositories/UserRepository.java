@@ -1,4 +1,4 @@
-package com.example.licenta.repositories;
+package com.example.licenta.services.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,2 +1,4 @@
-package com.example.licenta.Services.repositories;public class UserService {
+package com.example.licenta.services;
+
+public class UserService {
 }
