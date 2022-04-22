@@ -1,9 +1,7 @@
 package com.example.licenta.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
@@ -15,6 +13,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Entity
 public class User implements Serializable {
 
@@ -38,6 +38,8 @@ public class User implements Serializable {
 
     @Column(name = "ENABLED", columnDefinition = "BIT", length = 1)
     private boolean enabled;
+
+    private String provider;
 
     @JsonIgnore
     @ManyToMany

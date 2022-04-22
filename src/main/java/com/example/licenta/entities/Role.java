@@ -1,8 +1,6 @@
 package com.example.licenta.entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
@@ -17,7 +15,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Role implements Serializable {
 
-    public static final String USER = "USER";
     public static final String ROLE_USER = "ROLE_USER";
     private static final String ROLE_ADMIN = "ROLE_ADMIN";
     private static final String ROLE_TEACHER = "ROLE_TEACHER";
@@ -35,4 +32,6 @@ public class Role implements Serializable {
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
+
+
 }
