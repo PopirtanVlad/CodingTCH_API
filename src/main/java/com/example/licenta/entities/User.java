@@ -15,14 +15,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@Table(name = "users")
 @Entity
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Type(type = "uuid-binary")
-    private UUID userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_ID")
+    private Long userId;
 
     @Column(name = "PROVIDER_USER_ID")
     private String providerUserId;
@@ -36,8 +36,8 @@ public class User implements Serializable {
     @Column(name = "USER_PASSWORD")
     private String password;
 
-    @Column(name = "ENABLED", columnDefinition = "BIT", length = 1)
-    private boolean enabled;
+    @Column(name = "ENABLED")
+    private Boolean enabled;
 
     private String provider;
 

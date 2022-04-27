@@ -1,6 +1,7 @@
 package com.example.licenta.builders;
 
 import com.example.licenta.dtos.SignUpRequest;
+import com.example.licenta.security.oauth.user.OAuth2UserInfo;
 import com.example.licenta.utils.GeneralUtils;
 
 public class RequestsBuilder {

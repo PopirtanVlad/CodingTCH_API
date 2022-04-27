@@ -1,6 +1,5 @@
 package com.example.licenta.services;
 
-import antlr.StringUtils;
 import com.example.licenta.builders.RequestsBuilder;
 import com.example.licenta.builders.UserBuilder;
 import com.example.licenta.dtos.LocalUser;
@@ -10,24 +9,21 @@ import com.example.licenta.entities.Role;
 import com.example.licenta.entities.User;
 import com.example.licenta.exceptions.OAuth2AuthenticationProcessingException;
 import com.example.licenta.exceptions.UserAlreadyExistAuthenticationException;
+import com.example.licenta.security.oauth.user.OAuth2UserInfo;
+import com.example.licenta.security.oauth.user.OAuth2UserInfoFactory;
 import com.example.licenta.services.repositories.RoleRepository;
 import com.example.licenta.services.repositories.UserRepository;
-import com.example.licenta.utils.GeneralUtils;
-import com.nimbusds.oauth2.sdk.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -39,7 +35,7 @@ public class UserServiceImpl implements IUserService{
     private RoleRepository roleRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private UserBuilder userBuilder;
 
 
     @Override
@@ -49,7 +45,7 @@ public class UserServiceImpl implements IUserService{
             throw new UserAlreadyExistAuthenticationException("User with email " + signUpRequest.getEmail() + " already exists");
         }
 
-        User user = UserBuilder.generateUser(signUpRequest);
+        User user = userBuilder.generateUser(signUpRequest);
         final HashSet<Role> roles = new HashSet<>();
         roles.add(roleRepository.findByName(Role.ROLE_USER));
         user.setRoles(roles);
@@ -62,7 +58,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public Optional<User> findUserById(UUID id) {
+    public Optional<User> findUserById(Long id) {
         return userRepository.findById(id);
     }
 
@@ -70,9 +66,9 @@ public class UserServiceImpl implements IUserService{
     @Transactional
     public LocalUser processUserRegistration(String registrationId, Map<String, Object> attributes, OidcIdToken idToken, OidcUserInfo userInfo) {
         OAuth2UserInfo oAuth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(registrationId, attributes);
-        if (StringUtils.isEmpty(oAuth2UserInfo.getName())) {
+        if (oAuth2UserInfo.getName().isEmpty()) {
             throw new OAuth2AuthenticationProcessingException("Name not found from OAuth2 provider");
-        } else if (StringUtils.isEmpty(oAuth2UserInfo.getEmail())) {
+        } else if (oAuth2UserInfo.getEmail().isEmpty()) {
             throw new OAuth2AuthenticationProcessingException("Email not found from OAuth2 provider");
         }
         SignUpRequest userDetails = toUserRegistrationObject(registrationId, oAuth2UserInfo);

@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Value
 public class UserInfo {
-    UUID id;
+    Long id;
     String displayName;
     String email;
     List<String> roles;

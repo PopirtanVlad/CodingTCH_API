@@ -1,14 +1,20 @@
 package com.example.licenta.services;
 
 import com.example.licenta.dtos.LocalUser;
+import com.example.licenta.exceptions.ResourceNotFoundException;
+import com.example.licenta.utils.GeneralUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.licenta.entities.User;
 
+import java.util.UUID;
+
+@Service
 public class LocalUserDetailService implements UserDetailsService {
 
     @Autowired
@@ -24,8 +30,14 @@ public class LocalUserDetailService implements UserDetailsService {
         return createLocalUser(user);
     }
 
+    @Transactional
+    public LocalUser loadUserById(Long id) {
+        User user = userService.findUserById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+        return createLocalUser(user);
+    }
+
 
     private LocalUser createLocalUser(User user){
-        return new LocalUser(user.getEmail(), user.getPassword(), )
+        return new LocalUser(user.getUserId(), user.getPassword(), user.getEnabled(), true, true, true, GeneralUtils.buildSimpleGrantedAuthorities(user.getRoles()), user);
     }
 }

@@ -7,7 +7,7 @@ import java.util.UUID;
 import com.example.licenta.entities.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, UUID> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByEmail(String email);
 

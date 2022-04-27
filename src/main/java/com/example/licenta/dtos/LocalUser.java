@@ -19,12 +19,12 @@ public class LocalUser extends User implements OAuth2User, OidcUser {
     private com.example.licenta.entities.User user;
 
 
-    public LocalUser(final UUID userID, final String password, final boolean enabled, final boolean accountNonExpired, final boolean credentialsNonExpired,
+    public LocalUser(final Long userID, final String password, final boolean enabled, final boolean accountNonExpired, final boolean credentialsNonExpired,
                      final boolean accountNonLocked, final Collection<? extends GrantedAuthority> authorities, final com.example.licenta.entities.User user) {
         this(userID, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, user, null, null);
     }
 
-    public LocalUser(final UUID userID, final String password, final boolean enabled, final boolean accountNonExpired, final boolean credentialsNonExpired,
+    public LocalUser(final Long userID, final String password, final boolean enabled, final boolean accountNonExpired, final boolean credentialsNonExpired,
                      final boolean accountNonLocked, final Collection<? extends GrantedAuthority> authorities, final com.example.licenta.entities.User user, OidcIdToken idToken,
                      OidcUserInfo userInfo) {
         super(String.valueOf(userID), password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
@@ -36,7 +36,7 @@ public class LocalUser extends User implements OAuth2User, OidcUser {
 
 
     public static LocalUser create(com.example.licenta.entities.User user, Map<String, Object> attributes, OidcIdToken idToken, OidcUserInfo userInfo) {
-        LocalUser localUser = new LocalUser(user.getEmail(), user.getPassword(), user.isEnabled(), true, true, true, GeneralUtils.buildSimpleGrantedAuthorities((user.getRoles())),
+        LocalUser localUser = new LocalUser(user.getUserId(), user.getPassword(), user.getEnabled(), true, true, true, GeneralUtils.buildSimpleGrantedAuthorities((user.getRoles())),
                 user, idToken, userInfo);
         localUser.setAttributes(attributes);
         return localUser;

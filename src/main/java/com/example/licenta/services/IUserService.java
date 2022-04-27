@@ -16,7 +16,7 @@ public interface IUserService {
 
     User findUserByEmail(String email);
 
-    Optional<User> findUserById(UUID id);
+    Optional<User> findUserById(Long id);
 
     LocalUser processUserRegistration(String registrationId, Map<String, Object> attributes, OidcIdToken idToken, OidcUserInfo userInfo);
 }
