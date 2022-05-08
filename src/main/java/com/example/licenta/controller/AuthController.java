@@ -3,7 +3,10 @@ package com.example.licenta.controller;
 import javax.validation.Valid;
 
 import com.example.licenta.dtos.*;
-import com.example.licenta.exceptions.UserAlreadyExistAuthenticationException;
+import com.example.licenta.dtos.user.security.ApiResponse;
+import com.example.licenta.dtos.user.security.JwtAuthenticationResponse;
+import com.example.licenta.dtos.user.security.LocalUser;
+import com.example.licenta.exceptions.user.UserAlreadyExistAuthenticationException;
 import com.example.licenta.security.TokenProvider;
 import com.example.licenta.services.UserServiceImpl;
 import com.example.licenta.utils.GeneralUtils;

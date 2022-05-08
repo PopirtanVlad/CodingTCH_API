@@ -1,7 +1,7 @@
 package com.example.licenta.security.oauth.user;
 
-import com.example.licenta.dtos.SocialProvider;
-import com.example.licenta.exceptions.OAuth2AuthenticationProcessingException;
+import com.example.licenta.dtos.user.details.SocialProvider;
+import com.example.licenta.exceptions.user.OAuth2AuthenticationProcessingException;
 
 import java.util.Map;
 

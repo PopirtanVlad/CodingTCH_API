@@ -1,4 +1,4 @@
-package com.example.licenta.configs;
+package com.example.licenta.configs.Security;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

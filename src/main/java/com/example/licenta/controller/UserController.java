@@ -1,7 +1,7 @@
 package com.example.licenta.controller;
 
-import com.example.licenta.configs.CurrentUser;
-import com.example.licenta.dtos.LocalUser;
+import com.example.licenta.configs.Security.CurrentUser;
+import com.example.licenta.dtos.user.security.LocalUser;
 import com.example.licenta.utils.GeneralUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

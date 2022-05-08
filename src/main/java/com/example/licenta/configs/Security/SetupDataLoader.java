@@ -1,10 +1,8 @@
-package com.example.licenta.configs;
+package com.example.licenta.configs.Security;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Set;
 
-import com.example.licenta.dtos.SocialProvider;
+import com.example.licenta.dtos.user.details.SocialProvider;
 import com.example.licenta.entities.Role;
 import com.example.licenta.services.repositories.RoleRepository;
 import com.example.licenta.services.repositories.UserRepository;

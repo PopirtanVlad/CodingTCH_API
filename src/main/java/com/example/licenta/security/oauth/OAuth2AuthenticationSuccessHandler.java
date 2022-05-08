@@ -10,7 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.licenta.configs.AppProperties;
+import com.example.licenta.configs.Security.AppProperties;
 import com.example.licenta.exceptions.BadRequestException;
 import com.example.licenta.security.TokenProvider;
 import com.example.licenta.utils.CookieUtils;

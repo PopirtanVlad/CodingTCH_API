@@ -2,8 +2,8 @@ package com.example.licenta.security;
 
 import java.util.Date;
 
-import com.example.licenta.configs.AppProperties;
-import com.example.licenta.dtos.LocalUser;
+import com.example.licenta.configs.Security.AppProperties;
+import com.example.licenta.dtos.user.security.LocalUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;

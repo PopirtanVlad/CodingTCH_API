@@ -1,4 +1,4 @@
-package com.example.licenta.dtos;
+package com.example.licenta.dtos.user.details;
 
 public enum SocialProvider {
 

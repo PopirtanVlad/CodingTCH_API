@@ -1,18 +1,15 @@
 package com.example.licenta.services;
 
-import com.example.licenta.dtos.LocalUser;
+import com.example.licenta.dtos.user.security.LocalUser;
 import com.example.licenta.exceptions.ResourceNotFoundException;
 import com.example.licenta.utils.GeneralUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.licenta.entities.User;
-
-import java.util.UUID;
 
 @Service
 public class LocalUserDetailService implements UserDetailsService {

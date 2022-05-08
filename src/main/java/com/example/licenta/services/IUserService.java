@@ -1,18 +1,17 @@
 package com.example.licenta.services;
-import com.example.licenta.dtos.LocalUser;
+import com.example.licenta.dtos.user.security.LocalUser;
 import com.example.licenta.dtos.SignUpRequest;
 import com.example.licenta.entities.User;
 
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 
-import com.example.licenta.exceptions.UserAlreadyExistAuthenticationException;
+import com.example.licenta.exceptions.user.UserAlreadyExistAuthenticationException;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 
 public interface IUserService {
-    public User registerNewUser(SignUpRequest signUpRequest) throws UserAlreadyExistAuthenticationException;
+    User registerNewUser(SignUpRequest signUpRequest) throws UserAlreadyExistAuthenticationException;
 
     User findUserByEmail(String email);
 
