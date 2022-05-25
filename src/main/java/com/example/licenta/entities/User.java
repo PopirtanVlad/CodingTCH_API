@@ -42,4 +42,7 @@ public class User implements Serializable {
     @ManyToMany
     @JoinTable(name = "USER_ROLE", joinColumns = {@JoinColumn(name = "USER_ID")}, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID")})
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Solution> solutions;
 }

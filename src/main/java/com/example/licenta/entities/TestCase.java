@@ -1,25 +1,20 @@
 package com.example.licenta.entities;
 
-import com.example.licenta.utils.ProgrammingLanguage;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.time.Duration;
 import java.util.UUID;
-
 
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
-@Table(name = "submissions")
 @AllArgsConstructor
-public class Solution {
+@Table(name = "test_cases")
+public class TestCase {
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -27,17 +22,14 @@ public class Solution {
     @Type(type = "uuid-binary")
     private UUID id;
 
-    @ManyToOne
-    private User user;
+    @Column(name = "TEST_CASE_INPUT")
+    private String inputFilePath;
+
+    @Column(name = "TEST_CASE_EXPECTED")
+    private String expectedFilePath;
 
     @ManyToOne
     private Problem problem;
-
-    @Column(name = "PROGRAMMING_LANGUAGE")
-    private ProgrammingLanguage programmingLanguage;
-
-//    @Column(name = "UPLOAD_TIME")
-//    private Duration uploadTime;
 
 
 
