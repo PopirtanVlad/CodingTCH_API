@@ -1,8 +1,8 @@
 package com.example.licenta.utils;
 
-import com.example.licenta.dtos.LocalUser;
-import com.example.licenta.dtos.SocialProvider;
-import com.example.licenta.dtos.UserInfo;
+import com.example.licenta.dtos.user.security.LocalUser;
+import com.example.licenta.dtos.user.details.SocialProvider;
+import com.example.licenta.dtos.user.details.UserInfo;
 import com.example.licenta.entities.Role;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import com.example.licenta.entities.User;

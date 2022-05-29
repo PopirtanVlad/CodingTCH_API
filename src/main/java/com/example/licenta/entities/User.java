@@ -2,13 +2,10 @@ package com.example.licenta.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -45,4 +42,7 @@ public class User implements Serializable {
     @ManyToMany
     @JoinTable(name = "USER_ROLE", joinColumns = {@JoinColumn(name = "USER_ID")}, inverseJoinColumns = { @JoinColumn(name = "ROLE_ID")})
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Solution> solutions;
 }

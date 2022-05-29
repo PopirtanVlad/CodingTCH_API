@@ -1,4 +1,4 @@
-package com.example.licenta.exceptions;
+package com.example.licenta.exceptions.user;
 
 import org.springframework.security.core.AuthenticationException;
 

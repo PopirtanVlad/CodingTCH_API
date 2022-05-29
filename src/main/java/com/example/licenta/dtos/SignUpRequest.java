@@ -1,5 +1,6 @@
 package com.example.licenta.dtos;
 
+import com.example.licenta.dtos.user.details.SocialProvider;
 import com.example.licenta.validators.PasswordMatches;
 import lombok.Builder;
 import lombok.Data;

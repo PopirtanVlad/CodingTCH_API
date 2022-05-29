@@ -1,9 +1,8 @@
-package com.example.licenta.dtos;
+package com.example.licenta.dtos.user.details;
 
 import lombok.Value;
 
 import java.util.List;
-import java.util.UUID;
 
 @Value
 public class UserInfo {

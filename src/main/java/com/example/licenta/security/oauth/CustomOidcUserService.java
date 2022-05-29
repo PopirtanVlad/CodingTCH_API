@@ -1,6 +1,6 @@
 package com.example.licenta.security.oauth;
 
-import com.example.licenta.exceptions.OAuth2AuthenticationProcessingException;
+import com.example.licenta.exceptions.user.OAuth2AuthenticationProcessingException;
 import com.example.licenta.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;

@@ -1,7 +1,6 @@
-package com.example.licenta.dtos;
+package com.example.licenta.dtos.user.security;
 
 import com.example.licenta.utils.GeneralUtils;
-import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
@@ -10,7 +9,6 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import java.util.Collection;
 import java.util.Map;
-import java.util.UUID;
 
 public class LocalUser extends User implements OAuth2User, OidcUser {
     private final OidcIdToken idToken;

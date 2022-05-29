@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.licenta.dtos.SocialProvider;
-import com.example.licenta.exceptions.OAuth2AuthenticationProcessingException;
+import com.example.licenta.dtos.user.details.SocialProvider;
+import com.example.licenta.exceptions.user.OAuth2AuthenticationProcessingException;
 import com.example.licenta.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
