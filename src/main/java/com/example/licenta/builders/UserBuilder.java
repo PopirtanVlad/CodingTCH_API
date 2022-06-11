@@ -17,9 +17,7 @@ public class UserBuilder {
                 .displayName(signUpRequest.getDisplayName())
                 .email(signUpRequest.getEmail())
                 .password(passwordEncoder.encode(signUpRequest.getPassword()))
-                .provider(signUpRequest.getSocialProvider().getProviderType())
                 .enabled(true)
-                .providerUserId(signUpRequest.getProviderUserId())
                 .build();
     }
 }

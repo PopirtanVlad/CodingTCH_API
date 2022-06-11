@@ -47,6 +47,7 @@ public class UserServiceImpl implements IUserService{
         final HashSet<Role> roles = new HashSet<>();
         roles.add(roleRepository.findByName(Role.ROLE_USER));
         user.setRoles(roles);
+        userRepository.save(user);
         return user;
     }
 

@@ -32,6 +32,12 @@ public class Problem {
     @Column(name = "PROBLEM_STATEMENT")
     private String statement;
 
+    @Column(name = "PROBLEM_EXAMPLE_INPUT")
+    private String exampleInput;
+
+    @Column(name = "PROBLEM_EXAMPLE_OUTPUT")
+    private String exampleOutput;
+
     @Column(name = "PROBLEM_DIFFICULTY")
     private ProblemDifficulty difficulty;
 

@@ -4,6 +4,7 @@ import com.example.licenta.utils.ProblemDifficulty;
 import lombok.Builder;
 import lombok.Value;
 
+import java.time.Duration;
 import java.util.UUID;
 
 @Value
@@ -13,4 +14,8 @@ public class ProblemInfo {
     String title;
     String statement;
     ProblemDifficulty difficulty;
+    String exampleInput;
+    String exampleOutput;
+    int memoryLimit;
+    Long timeLimit;
 }
