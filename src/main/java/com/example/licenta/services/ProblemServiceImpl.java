@@ -25,7 +25,6 @@ public class ProblemServiceImpl implements IProblemService{
     @Override
     @Transactional
     public Problem addNewProblem(ProblemInfo problemInfo) throws ResourceAlreadyExistsException {
-        System.out.println(problemInfo);
         if(problemRepository.existsByTitle(problemInfo.getTitle())){
             throw new ResourceAlreadyExistsException("Problem","title",problemInfo.getTitle());
         }

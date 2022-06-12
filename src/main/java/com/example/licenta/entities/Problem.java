@@ -42,7 +42,7 @@ public class Problem {
     private ProblemDifficulty difficulty;
 
     @OneToMany(mappedBy="problem")
-    private Set<Solution> solutionSet;
+    private Set<Submission> submissionSet;
 
     @Column(name = "TIME_LIMIT")
     private Duration time_limit;

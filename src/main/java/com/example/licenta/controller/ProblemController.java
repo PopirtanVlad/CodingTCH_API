@@ -25,7 +25,6 @@ public class ProblemController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addProblem(@Valid @RequestBody ProblemInfo problemInfo){
-        System.out.println(problemInfo);
         problemService.addNewProblem(problemInfo);
         return new ResponseEntity<>("Problem saved successfully", HttpStatus.OK);
     }

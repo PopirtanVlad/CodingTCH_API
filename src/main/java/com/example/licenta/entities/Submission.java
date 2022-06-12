@@ -1,25 +1,22 @@
 package com.example.licenta.entities;
 
 import com.example.licenta.utils.ProgrammingLanguage;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.time.Duration;
 import java.util.UUID;
 
 
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @Table(name = "submissions")
 @AllArgsConstructor
-public class Solution {
+public class Submission {
 
     @Id
     @GeneratedValue(generator = "uuid2")

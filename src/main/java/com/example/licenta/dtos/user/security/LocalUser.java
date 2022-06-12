@@ -34,7 +34,7 @@ public class LocalUser extends User implements OAuth2User, OidcUser {
 
 
     public static LocalUser create(com.example.licenta.entities.User user, Map<String, Object> attributes, OidcIdToken idToken, OidcUserInfo userInfo) {
-        LocalUser localUser = new LocalUser(user.getUserId(), user.getPassword(), user.getEnabled(), true, true, true, GeneralUtils.buildSimpleGrantedAuthorities((user.getRoles())),
+        LocalUser localUser = new LocalUser(user.getId(), user.getPassword(), user.getEnabled(), true, true, true, GeneralUtils.buildSimpleGrantedAuthorities((user.getRoles())),
                 user, idToken, userInfo);
         localUser.setAttributes(attributes);
         return localUser;

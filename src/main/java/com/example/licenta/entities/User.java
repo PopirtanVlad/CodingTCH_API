@@ -19,7 +19,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
-    private Long userId;
+    private Long id;
 
     @Column(name = "PROVIDER_USER_ID")
     private String providerUserId;
@@ -44,5 +44,5 @@ public class User implements Serializable {
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "user")
-    private Set<Solution> solutions;
+    private Set<Submission> submissions;
 }

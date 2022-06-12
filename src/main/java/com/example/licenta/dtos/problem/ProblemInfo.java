@@ -4,6 +4,7 @@ import com.example.licenta.utils.ProblemDifficulty;
 import lombok.Builder;
 import lombok.Value;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.UUID;
 

@@ -1,5 +1,6 @@
 package com.example.licenta;
 
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(scanBasePackages = "com.example.licenta")
 @EnableJpaRepositories
 @EnableTransactionManagement
+@EnableRabbit
 public class LicentaApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
