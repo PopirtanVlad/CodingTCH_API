@@ -47,8 +47,8 @@ public class TestCasesServiceImpl implements ITestCaseService {
 
                 OutputStream os = new FileOutputStream(file);
                 os.write(multipartFile.getBytes());
+                os.close();
                 storageService.uploadFile(problem.getTitle(), file);
-
                 file.delete();
 
             } catch (IOException | ResourceNotFoundException e) {
