@@ -1,4 +1,4 @@
-package com.example.licenta.services;
+package com.example.licenta.services.interfaces;
 
 import com.example.licenta.dtos.problem.ProblemInfo;
 import com.example.licenta.entities.Problem;
@@ -15,7 +15,9 @@ public interface IProblemService {
 
     List<ProblemInfo> getAllProblems();
 
-    Optional<Problem> findProblemById(UUID id);
+    Problem findProblemById(UUID id);
+
+    Problem findProblemByTitle(String problemTitle);
 
     List<Problem> getProblemsByDifficulty(ProblemDifficulty difficulty);
 

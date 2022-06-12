@@ -1,6 +1,7 @@
 package com.example.licenta.controller;
 
 import com.example.licenta.dtos.problem.ProblemInfo;
+import com.example.licenta.dtos.user.security.ApiResponse;
 import com.example.licenta.services.ProblemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,9 +25,9 @@ public class ProblemController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addProblem(@Valid @RequestBody ProblemInfo problemInfo){
+    public ResponseEntity<?> addProblem(@Valid @RequestBody ProblemInfo problemInfo){
         problemService.addNewProblem(problemInfo);
-        return new ResponseEntity<>("Problem saved successfully", HttpStatus.OK);
+        return ResponseEntity.ok().body(new ApiResponse(true, "Problem added successfully"));
     }
 
 }

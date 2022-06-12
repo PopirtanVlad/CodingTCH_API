@@ -1,4 +1,4 @@
-package com.example.licenta.services;
+package com.example.licenta.services.interfaces;
 import com.example.licenta.dtos.user.security.LocalUser;
 import com.example.licenta.dtos.SignUpRequest;
 import com.example.licenta.entities.User;

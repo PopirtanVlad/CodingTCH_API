@@ -2,6 +2,7 @@ package com.example.licenta.services;
 
 import com.example.licenta.dtos.user.security.LocalUser;
 import com.example.licenta.exceptions.ResourceNotFoundException;
+import com.example.licenta.services.interfaces.IUserService;
 import com.example.licenta.utils.GeneralUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;

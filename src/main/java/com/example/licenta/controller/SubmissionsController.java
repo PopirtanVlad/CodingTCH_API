@@ -1,7 +1,7 @@
 package com.example.licenta.controller;
 
-import com.example.licenta.dtos.problem.ProblemInfo;
-import com.example.licenta.dtos.submissions.SubmissionDetails;
+import com.example.licenta.dtos.submissions.SubmissionRequest;
+import com.example.licenta.dtos.user.security.ApiResponse;
 import com.example.licenta.services.SubmissionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,15 +20,15 @@ public class SubmissionsController {
     private SubmissionServiceImpl submissionService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<SubmissionDetails>> getAllSubmissions(){
-        List<SubmissionDetails> submissions = submissionService.getAllSubmissions();
+    public ResponseEntity<List<SubmissionRequest>> getAllSubmissions(){
+        List<SubmissionRequest> submissions = submissionService.getAllSubmissions();
         return new ResponseEntity<>(submissions, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addSubmission(@Valid @RequestBody SubmissionDetails submissionDetails, Authentication authentication){
-        submissionService.addNewSubmission(submissionDetails, authentication);
-        return new ResponseEntity<>("Problem saved successfully", HttpStatus.OK);
+    public ResponseEntity<?> addSubmission(@Valid @RequestBody SubmissionRequest submissionRequest, Authentication authentication){
+        submissionService.addNewSubmission(submissionRequest, authentication);
+        return ResponseEntity.ok().body(new ApiResponse(true, "Submission successful"));
     }
 
 }
