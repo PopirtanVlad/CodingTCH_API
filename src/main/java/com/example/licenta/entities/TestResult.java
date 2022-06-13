@@ -35,4 +35,7 @@ public class TestResult {
     @Column(name="ERROR_MESSAGE")
     private String errorMessage;
 
+    @ManyToOne
+    private Submission submission;
+
 }
