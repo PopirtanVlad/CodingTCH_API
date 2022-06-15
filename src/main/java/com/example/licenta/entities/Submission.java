@@ -24,7 +24,7 @@ public class Submission {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Type(type = "uuid-binary")
+    @Type(type = "uuid-char")
     private UUID id;
 
     @ManyToOne

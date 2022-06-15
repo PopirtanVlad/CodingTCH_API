@@ -20,16 +20,16 @@ public class TestResult {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Type(type = "uuid-binary")
+    @Type(type = "uuid-char")
     private UUID id;
 
     @Column(name="TEST_STATUS")
     private boolean isCorrect;
 
-    @Column(name="TEST_TIME_ELAPSED")
+    @Column(name="TIME_ELAPSED")
     private Duration timeElapsed;
 
-    @Column(name="TEST_MEMORY_USED")
+    @Column(name="MEMORY_USED")
     private int memoryUsed;
 
     @Column(name="ERROR_MESSAGE")

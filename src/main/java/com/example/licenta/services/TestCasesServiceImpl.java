@@ -37,8 +37,8 @@ public class TestCasesServiceImpl implements ITestCaseService {
 
                 TestCase testCase = new TestCase();
                 if (fileName.contains(".in")) {
-                    testCase.setInputFilePath(FileUtils.getFilePath(problem.getTitle(), fileName));
-                    testCase.setExpectedFilePath(FileUtils.getFilePath(problem.getTitle(), fileName.split("\\.")[0] + ".ref"));
+                    testCase.setInputFilePath(fileName);
+                    testCase.setExpectedFilePath(fileName.split("\\.")[0] + ".ref");
                     testCase.setProblem(problem);
                     testCasesRepository.save(testCase);
                 }

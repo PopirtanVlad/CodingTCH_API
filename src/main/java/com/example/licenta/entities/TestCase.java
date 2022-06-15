@@ -19,13 +19,13 @@ public class TestCase {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Type(type = "uuid-binary")
+    @Type(type = "uuid-char")
     private UUID id;
 
     @Column(name = "TEST_CASE_INPUT")
     private String inputFilePath;
 
-    @Column(name = "TEST_CASE_EXPECTED")
+    @Column(name = "TEST_CASE_OUTPUT")
     private String expectedFilePath;
 
     @ManyToOne
