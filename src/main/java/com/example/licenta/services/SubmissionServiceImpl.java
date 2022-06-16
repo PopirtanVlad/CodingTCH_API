@@ -108,8 +108,10 @@ public class SubmissionServiceImpl implements ISubmissionService {
         File file = createFileFromSolution(submission.getId().toString(), submissionRequest.getSolutionText());
         storageService.uploadFile(problem.get().getTitle(),file);
 
+//
+//        rabbitTemplate.convertAndSend(RabbitMQConfig.TOPIC_EXCHANGE_NAME,RabbitMQConfig.ROUTING_KEY_NAME,submission.getId());
 
-        rabbitTemplate.convertAndSend(RabbitMQConfig.TOPIC_EXCHANGE_NAME,RabbitMQConfig.ROUTING_KEY_NAME,submission.getId());
+        rabbitTemplate.convertAndSend(RabbitMQConfig.QUEUE_NAME, submission.getId());
 
         file.delete();
 
