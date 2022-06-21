@@ -24,11 +24,11 @@ public class SubmissionBuilder {
                 .build();
     }
 
-    public static SubmissionDetails generateSubmissionDetails(Submission submission, Problem problem, String solution, List<TestResultInfo> testResultInfos){
+    public static SubmissionDetails generateSubmissionDetails(Submission submission, Problem problem, String solution, List<TestResultInfo> testResultInfos, String problemStatement){
         return SubmissionDetails.builder()
                 .solution(solution)
                 .submissionPreview(generateSubmissionPreview(submission))
-                .problem(ProblemBuilder.generateProblemInfo(problem))
+                .problem(ProblemBuilder.generateProblemInfo(problem, problemStatement))
                 .programmingLanguage(submission.getProgrammingLanguage())
                 .testResults(testResultInfos)
                 .build();
@@ -37,7 +37,7 @@ public class SubmissionBuilder {
     public static SubmissionRequest generateSubmissionRequest(Submission submission){
         return SubmissionRequest.builder()
                 .id(submission.getId())
-                .problemID(submission.getId())
+                .problemTitle(submission.getProblem().getTitle())
                 .programmingLanguage(submission.getProgrammingLanguage())
                 .userID(submission.getUser().getId())
                 .uploadTime(submission.getUploadTime())

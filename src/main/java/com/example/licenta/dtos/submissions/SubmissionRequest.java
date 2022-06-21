@@ -12,7 +12,7 @@ import java.util.UUID;
 public class SubmissionRequest {
     UUID id;
     ProgrammingLanguage programmingLanguage;
-    UUID problemID;
+    String problemTitle;
     Long userID;
     String solutionText;
     LocalDateTime uploadTime;

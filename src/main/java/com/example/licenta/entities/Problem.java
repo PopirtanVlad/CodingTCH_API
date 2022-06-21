@@ -29,9 +29,6 @@ public class Problem {
     @Column(name = "PROBLEM_TiTLE")
     private String title;
 
-    @Column(name = "PROBLEM_STATEMENT")
-    private String statement;
-
     @Column(name = "PROBLEM_EXAMPLE_INPUT")
     private String exampleInput;
 

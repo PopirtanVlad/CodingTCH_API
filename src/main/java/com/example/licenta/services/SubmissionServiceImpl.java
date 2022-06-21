@@ -93,9 +93,9 @@ public class SubmissionServiceImpl implements ISubmissionService {
         if (user.isEmpty()){
             throw new ResourceNotFoundException("User", "id", authUser.getUser().getId());
         }
-        Optional<Problem> problem = problemRepository.findById(submissionRequest.getProblemID());
+        Optional<Problem> problem = problemRepository.findByTitle(submissionRequest.getProblemTitle());
         if (problem.isEmpty()){
-            throw new ResourceNotFoundException("Problem", "id", submissionRequest.getProblemID());
+            throw new ResourceNotFoundException("Problem", "id", submissionRequest.getProblemTitle());
         }
 
         Submission submission = SubmissionBuilder.generateSubmission(submissionRequest, user.get(), problem.get());
@@ -126,13 +126,15 @@ public class SubmissionServiceImpl implements ISubmissionService {
         }
         String solution = storageService.downloadFile(submission.get().getProblem().getTitle(), id.toString());
 
+        String problemStatement = storageService.downloadFile(submission.get().getProblem().getTitle(), submission.get().getProblem().getTitle()+".desc");
+
         List<TestResult> testResults = testResultsRepo.findBySubmission(submission.get());
 
         List<TestResultInfo> testResultsInfos = testResults.stream()
                 .map(TestResultBuilder::generateTestResultInfo)
                 .collect(Collectors.toList());
 
-        SubmissionDetails submissionDetails = SubmissionBuilder.generateSubmissionDetails(submission.get(), submission.get().getProblem(),solution, testResultsInfos);
+        SubmissionDetails submissionDetails = SubmissionBuilder.generateSubmissionDetails(submission.get(), submission.get().getProblem(),solution, testResultsInfos, problemStatement);
         return submissionDetails;
     }
 }

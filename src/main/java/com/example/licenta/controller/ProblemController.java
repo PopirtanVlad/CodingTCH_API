@@ -1,6 +1,7 @@
 package com.example.licenta.controller;
 
 import com.example.licenta.dtos.problem.ProblemInfo;
+import com.example.licenta.dtos.problem.ProblemPreview;
 import com.example.licenta.dtos.user.security.ApiResponse;
 import com.example.licenta.services.ProblemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,17 @@ public class ProblemController {
     private ProblemServiceImpl problemService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ProblemInfo>> getProblems(){
-        List<ProblemInfo> problemInfos = problemService.getAllProblems();
+    public ResponseEntity<List<ProblemPreview>> getProblems(){
+        List<ProblemPreview> problemInfos = problemService.getAllProblems();
         return new ResponseEntity<>(problemInfos, HttpStatus.OK);
     }
+
+    @GetMapping("/{title}")
+    public ResponseEntity<ProblemInfo> getProblemByTitle(@PathVariable String title){
+        ProblemInfo problemInfo = problemService.getProblemByTitle(title);
+        return new ResponseEntity<>(problemInfo, HttpStatus.OK);
+    }
+
 
     @PostMapping("/add")
     public ResponseEntity<?> addProblem(@Valid @RequestBody ProblemInfo problemInfo){
