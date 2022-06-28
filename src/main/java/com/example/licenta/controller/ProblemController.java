@@ -34,8 +34,12 @@ public class ProblemController {
 
     @PostMapping("/add")
     public ResponseEntity<?> addProblem(@Valid @RequestBody ProblemInfo problemInfo){
-        problemService.addNewProblem(problemInfo);
-        return ResponseEntity.ok().body(new ApiResponse(true, "Problem added successfully"));
+        try {
+            problemService.addNewProblem(problemInfo);
+            return ResponseEntity.ok().body(new ApiResponse(true, "Problem added successfully"));
+        }catch(Exception e){
+            return new ResponseEntity<>(new ApiResponse(false, "Problem couldn't be saved: " + e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

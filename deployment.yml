@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: codingtch-api-service
+spec:
+  selector:
+    matchLabels:
+      app: codingtch-api-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: codingtch-api-service
+    spec:
+      containers:
+        - name: codingtch-api-service
+          image: popirtanvlad/codingtch-api-service
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080

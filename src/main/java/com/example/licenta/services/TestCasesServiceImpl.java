@@ -2,6 +2,7 @@ package com.example.licenta.services;
 
 import com.example.licenta.entities.Problem;
 import com.example.licenta.entities.TestCase;
+import com.example.licenta.exceptions.BadRequestException;
 import com.example.licenta.exceptions.ResourceNotFoundException;
 import com.example.licenta.services.interfaces.ITestCaseService;
 import com.example.licenta.services.repositories.TestCasesRepository;
@@ -52,7 +53,9 @@ public class TestCasesServiceImpl implements ITestCaseService {
                 file.delete();
 
             } catch (IOException | ResourceNotFoundException e) {
+                problemService.deleteProblemByTitle(multipartFile.getOriginalFilename().split("_")[0]);
                 e.printStackTrace();
+                throw new BadRequestException("Problem couldn't be saved because of bad test cases upload");
             }
         });
         return "Test cases saved";

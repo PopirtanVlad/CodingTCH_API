@@ -21,7 +21,11 @@ public class TestCasesController {
 
     @PostMapping("/add")
     public ResponseEntity<?> uploadTestCases(@RequestParam(value = "files", required = false) MultipartFile[] files){
-        testCasesService.saveTestCases(files);
-        return ResponseEntity.ok().body(new ApiResponse(true, "Test cases added successfully"));
+        try {
+            testCasesService.saveTestCases(files);
+            return ResponseEntity.ok().body(new ApiResponse(true, "Test cases added successfully"));
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ApiResponse(false, "Problem couldn't be saved because of bad test cases upload"), HttpStatus.BAD_REQUEST);
+        }
     }
 }

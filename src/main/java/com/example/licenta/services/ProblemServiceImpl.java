@@ -4,6 +4,7 @@ import com.example.licenta.builders.ProblemBuilder;
 import com.example.licenta.dtos.problem.ProblemInfo;
 import com.example.licenta.dtos.problem.ProblemPreview;
 import com.example.licenta.entities.Problem;
+import com.example.licenta.exceptions.BadRequestException;
 import com.example.licenta.exceptions.ResourceAlreadyExistsException;
 import com.example.licenta.exceptions.ResourceNotFoundException;
 import com.example.licenta.services.interfaces.IProblemService;
@@ -50,7 +51,7 @@ public class ProblemServiceImpl implements IProblemService {
             File problemStatement = createFile(problemInfo.getStatement(), problemInfo.getTitle());
             storageService.uploadFile(problemInfo.getTitle(),problemStatement);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new BadRequestException("Problem in saving the problem statement");
         }
         Problem problem = ProblemBuilder.generateProblem(problemInfo);
         problemRepository.save(problem);
@@ -87,6 +88,11 @@ public class ProblemServiceImpl implements IProblemService {
             throw new ResourceNotFoundException("Problem", "title", problemTitle);
         }
         return problem.get();
+    }
+
+    public void deleteProblemByTitle(String problemTitle){
+        Problem problem = findProblemByTitle(problemTitle);
+        problemRepository.delete(problem);
     }
 
     @Override
