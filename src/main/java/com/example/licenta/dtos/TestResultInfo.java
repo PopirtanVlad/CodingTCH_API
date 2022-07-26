@@ -11,5 +11,5 @@ public class TestResultInfo{
     String errorMessage;
     boolean testStatus;
     int testMemoryUsed;
-    Duration testTimeElapsed;
+    long testTimeElapsed;
 }

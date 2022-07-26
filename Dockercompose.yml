@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  api:
+    image: popirtanvlad/codingtch-api
+    ports:
+     - 8080:8080
+    networks:
+     - network1
+  front-end:
+    image: popirtanvlad/codingtch-front-end
+    ports:
+     - 3000:3000
+    networks:
+     - network1
+  processing:
+    image: popirtanvlad/codingtch-processing
+    environment:
+     - AWS_ACCESS_KEY_ID=AKIAVTNGBAJR377DZ3OX
+     - AWS_SECRET_ACCESS_KEY=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
+
+networks:
+  network1:

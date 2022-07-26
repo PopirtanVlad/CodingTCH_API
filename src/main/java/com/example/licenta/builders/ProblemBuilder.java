@@ -19,7 +19,7 @@ public class ProblemBuilder {
                 .exampleOutput(problemInfo.getExampleOutput())
                 .difficulty(problemInfo.getDifficulty())
                 .memory_limit(problemInfo.getMemoryLimit())
-                .time_limit(Duration.ofSeconds(problemInfo.getTimeLimit()))
+                .time_limit(Duration.ofMillis(problemInfo.getTimeLimit()))
                 .build();
     }
 
@@ -29,7 +29,7 @@ public class ProblemBuilder {
                 .title(problem.getTitle())
                 .difficulty(problem.getDifficulty())
                 .statement(problemStatement)
-                .timeLimit(problem.getTime_limit().getSeconds())
+                .timeLimit(problem.getTime_limit().toMillis())
                 .memoryLimit(problem.getMemory_limit())
                 .exampleInput(problem.getExampleInput())
                 .exampleOutput(problem.getExampleOutput())

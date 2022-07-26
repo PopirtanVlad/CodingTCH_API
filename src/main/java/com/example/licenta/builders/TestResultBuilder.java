@@ -10,7 +10,7 @@ public class TestResultBuilder {
                 .testMemoryUsed(testResult.getMemoryUsed())
                 .testStatus(testResult.isCorrect())
                 .errorMessage(testResult.getErrorMessage())
-                .testTimeElapsed(testResult.getTimeElapsed())
+                .testTimeElapsed(testResult.getTimeElapsed().toMillis())
                 .build();
     }
 
